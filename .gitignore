@@ -1,4 +1,5 @@
 *.pdf
+**/__pycache__/
 paper/**/*.json
 trash/
 nohup.out

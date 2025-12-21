@@ -1,14 +1,22 @@
 import os
 from pathlib import Path
-from openai import OpenAI
+# lazy import OpenAI to avoid failing when openai package is not installed
+try:
+    from openai import OpenAI
+except Exception:
+    OpenAI = None
 from typing import List, Optional, Union
 
 try:
     import torch
+    import torch.nn.functional as F
+    import numpy as np
     from transformers import AutoTokenizer, AutoModel
 except Exception:
     # Defer import errors until the Embed class is used
     torch = None
+    F = None
+    np = None
     AutoTokenizer = None
     AutoModel = None
 
@@ -44,62 +52,116 @@ class API:
 
 
 class Embed:
-    """Embed wrapper for a local Hugging Face model (e.g. nvidia/NV-Embed-v2).
+    """Embed helper: load a pretrained embed model and provide an `encode` method.
 
-    Usage:
-      e = Embed(model_dir='/model/squirrel/NV-Embed-v2')
-      vec = e.encode('some text')
+    Behavior:
+    - If the loaded model exposes an `encode` method, it will be used directly.
+    - Otherwise the class will tokenize inputs and run the model, mean-pooling
+      the `last_hidden_state` with the attention mask.
+
+    Returns a NumPy array of shape (N, D). Optionally normalizes to unit L2.
     """
 
-    def __init__(self, model_dir: str = '/model/squirrel/NV-Embed-v2', device: Optional[str] = None):
-        if AutoModel is None or AutoTokenizer is None or torch is None:
-            raise RuntimeError('Required packages not found. Please install transformers and torch.')
+    def __init__(self, model_name: str = "nvidia/NV-Embed-v2", device: Optional[str] = None, max_length: int = 32768, batch_size: int = 8, trust_remote_code: bool = True, multi_gpu: bool = False):
+        if torch is None or AutoModel is None or AutoTokenizer is None:
+            raise ImportError("torch and transformers are required to use Embed. Please install them.")
 
-        self.model_dir = model_dir
-        if device is None:
-            device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        self.device = device
+        self.model_name = model_name
+        self.max_length = max_length
+        self.batch_size = batch_size
+        self.trust_remote_code = trust_remote_code
 
+        self.multi_gpu = bool(multi_gpu)
+
+        if device:
+            self.device = torch.device(device)
+        else:
+            self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+        # load tokenizer and model
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=trust_remote_code)
+        self.model = AutoModel.from_pretrained(model_name, trust_remote_code=trust_remote_code)
+
+        # If multiple GPUs requested and available, wrap with DataParallel for inference
         try:
-            self.tokenizer = AutoTokenizer.from_pretrained(model_dir, local_files_only=True)
-            self.model = AutoModel.from_pretrained(model_dir, local_files_only=True)
-        except Exception as e:
-            raise RuntimeError(f'加载嵌入模型失败: {e}')
+            if self.multi_gpu and torch.cuda.is_available() and torch.cuda.device_count() > 1:
+                device_ids = list(range(torch.cuda.device_count()))
+                self.model.to(torch.device('cuda'))
+                self.model = torch.nn.DataParallel(self.model, device_ids=device_ids)
+            else:
+                self.model.to(self.device)
+        except Exception:
+            # best-effort placement; continue on exception
+            pass
 
-        self.model.to(self.device)
-        self.model.eval()
+    def _batch_iter(self, items):
+        for i in range(0, len(items), self.batch_size):
+            yield items[i : i + self.batch_size]
 
-    def _mean_pooling(self, model_output, attention_mask: torch.Tensor) -> torch.Tensor:
-        token_embeddings = model_output.last_hidden_state
-        input_mask_expanded = attention_mask.unsqueeze(-1).expand(token_embeddings.size()).float()
-        sum_embeddings = torch.sum(token_embeddings * input_mask_expanded, dim=1)
-        sum_mask = torch.clamp(input_mask_expanded.sum(dim=1), min=1e-9)
-        return sum_embeddings / sum_mask
+    def encode(self, texts: Union[str, List[str]], instruction: Optional[str] = None, max_length: Optional[int] = None, normalize: bool = True) -> "np.ndarray":
+        """Encode one or multiple texts and return embeddings as a NumPy array.
 
-    def encode(self, texts: Union[str, List[str]], normalize: bool = True) -> Union[List[float], List[List[float]]]:
-        """Encode a single string or a list of strings to embedding vectors (list of floats).
-
-        Returns a single vector for a single input string, or a list of vectors for multiple inputs.
+        Args:
+            texts: a single string or list of strings.
+            instruction: optional instruction string (passed to model.encode if available).
+            max_length: optional override for max token length.
+            normalize: whether to L2-normalize embeddings.
         """
-        single = False
         if isinstance(texts, str):
             texts = [texts]
-            single = True
 
-        enc = self.tokenizer(texts, padding=True, truncation=True, return_tensors='pt')
-        input_ids = enc['input_ids'].to(self.device)
-        attention_mask = enc['attention_mask'].to(self.device)
+        if max_length is None:
+            max_length = self.max_length
 
-        with torch.no_grad():
-            out = self.model(input_ids=input_ids, attention_mask=attention_mask)
-            emb = self._mean_pooling(out, attention_mask)
-            if normalize:
-                emb = torch.nn.functional.normalize(emb, p=2, dim=1)
+        # If the model exposes an `encode` helper (like NV-Embed), prefer it
+        model_for_call = self.model
+        # If wrapped by DataParallel, the real module is under .module
+        if hasattr(self.model, "module"):
+            model_for_call = self.model.module
 
-        emb = emb.cpu().numpy()
-        if single:
-            return emb[0].tolist()
-        return [v.tolist() for v in emb]
+        if hasattr(model_for_call, "encode"):
+            # model.encode may return torch.Tensor or numpy array
+            emb = model_for_call.encode(texts, instruction=(instruction or ""), max_length=max_length, batch_size=self.batch_size)
+            if isinstance(emb, torch.Tensor):
+                emb = emb.detach().cpu().numpy()
+            return self._maybe_normalize(emb, normalize)
+
+        # Otherwise use tokenizer + forward + mean pooling
+        all_embs = []
+        for batch in self._batch_iter(texts):
+            inputs = self.tokenizer(batch, padding=True, truncation=True, return_tensors="pt", max_length=max_length)
+            # DataParallel will scatter tensors across devices; ensure tensors are on primary device
+            target_device = self.device
+            if self.multi_gpu and torch.cuda.is_available() and torch.cuda.device_count() > 1:
+                # DataParallel uses primary CUDA device (cuda:0)
+                target_device = torch.device('cuda:0')
+            inputs = {k: v.to(target_device) for k, v in inputs.items()}
+            with torch.no_grad():
+                out = self.model(**inputs, return_dict=True)
+                last_hidden = out.last_hidden_state  # (B, L, H)
+
+            # move to cpu for pooling
+            attention_mask = inputs.get("attention_mask")
+            if attention_mask is not None:
+                mask = attention_mask.unsqueeze(-1).to(last_hidden.dtype)
+                summed = (last_hidden * mask).sum(dim=1)
+                lengths = mask.sum(dim=1).clamp(min=1e-9)
+                pooled = summed / lengths
+            else:
+                pooled = last_hidden.mean(dim=1)
+
+            pooled = pooled.detach().cpu().numpy()
+            all_embs.append(pooled)
+
+        emb = np.vstack(all_embs)
+        return self._maybe_normalize(emb, normalize)
+
+    def _maybe_normalize(self, emb: "np.ndarray", normalize: bool) -> "np.ndarray":
+        if not normalize or np is None:
+            return emb
+        norms = np.linalg.norm(emb, axis=1, keepdims=True)
+        norms = np.clip(norms, 1e-12, None)
+        return emb / norms
     
     def kimi_forward(self, prompt: str, file: str = None) -> str:
         client = OpenAI(
@@ -145,4 +207,3 @@ class Embed:
         )
 
         return response.choices[0].message.content
-    
