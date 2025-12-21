@@ -1,0 +1,6 @@
+*.pdf
+paper/**/*.json
+trash/
+nohup.out
+*.log
+tmp.py

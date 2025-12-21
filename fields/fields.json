@@ -1,0 +1,113 @@
+[
+  {
+    "domain": "Machine Learning (ML)",
+    "core_focus": "Algorithms that learn patterns and models from data without explicit programming.",
+    "rdr_perspective_example": "I: Datasets/Features; M: Learning Algorithm (e.g., SVM, Decision Tree); O: Predictive Model/Function; W: Loss Function Minimization; R: Training/Validation Pipeline."
+  },
+  {
+    "domain": "Deep Learning (DL)",
+    "core_focus": "A subfield of ML using deep neural networks for representation learning and complex function approximation.",
+    "rdr_perspective_example": "I: Raw Data (Image, Text, Audio); M: Neural Architecture (CNN, RNN, Transformer); O: Deep Representations/Predictions; W: Gradient-Based Optimization; R: Pre-training/Fine-tuning, Optimizer Selection."
+  },
+  {
+    "domain": "Reinforcement Learning (RL)",
+    "core_focus": "Learning optimal behavior through trial-and-error interactions with an environment to maximize cumulative reward.",
+    "rdr_perspective_example": "I: Environment State; M: Policy/Value Function; O: Action; W: Cumulative Reward Maximization; R: Exploration-Exploitation Algorithm (e.g., PPO, DQN)."
+  },
+  {
+    "domain": "Probabilistic Graphical Models (PGMs) & Causal Inference",
+    "core_focus": "Representing probabilistic dependencies among variables using graphs and inferring cause-effect relationships.",
+    "rdr_perspective_example": "I: Observational/Interventional Data; M: Bayesian Network/Structural Causal Model; O: Probabilistic Inference/Causal Effect Estimate; W: Likelihood Maximization/Structure Learning Criterion; R: MCMC Sampling/Variational Inference."
+  },
+  {
+    "domain": "Continual/Lifelong Learning",
+    "core_focus": "Learning continuously from a non-stationary stream of data while retaining previously acquired knowledge.",
+    "rdr_perspective_example": "I: Sequential Data/Task Streams; M: Architectures with Memory/Regularization; O: Updated Model; W: Task Loss + Forgetting Prevention; R: Replay, Regularization, or Architectural Expansion Strategies."
+  },
+  {
+    "domain": "Computer Vision (CV)",
+    "core_focus": "Enabling machines to 'see' and understand visual information like images and videos.",
+    "rdr_perspective_example": "I: Pixel Matrix; M: Vision Model (ResNet, ViT); O: Bounding Boxes, Segmentation Maps, Captions; W: Task-Specific Visual Loss; R: Large-Scale Visual Pre-training."
+  },
+  {
+    "domain": "Natural Language Processing (NLP)",
+    "core_focus": "Enabling machines to understand, generate, and manipulate human language.",
+    "rdr_perspective_example": "I: Text Sequences; M: Language Model (BERT, GPT); O: Translation, Summary, Answer; W: Language Modeling Objective; R: Self-Supervised Pre-training + Instruction Tuning."
+  },
+  {
+    "domain": "Speech & Audio Processing",
+    "core_focus": "Processing and analyzing speech signals, including recognition, synthesis, and speaker identification.",
+    "rdr_perspective_example": "I: Waveforms/Spectrograms; M: Acoustic Model (TDNN, Conformer); O: Transcript/Synthesized Speech; W: CTC/Seq2Seq Loss; R: End-to-End Training Pipeline."
+  },
+  {
+    "domain": "Multimodal AI",
+    "core_focus": "Integrating and jointly understanding multiple modalities like text, image, and audio.",
+    "rdr_perspective_example": "I: Aligned Multimodal Data Pairs; M: Cross-Modal Fusion Architecture; O: Cross-Modal Retrieval/Generation; W: Contrastive/Generative Loss; R: Two-Tower or Fusion Network Training."
+  },
+  {
+    "domain": "Generative AI",
+    "core_focus": "Specializing in creating novel content (images, text, code, video, etc.).",
+    "rdr_perspective_example": "I: Noise/Conditioning Prompt; M: Generative Architecture (Diffusion, GAN, Autoregressive); O: High-Fidelity Generated Sample; W: Distribution Matching Loss; R: Multi-Stage Training & Guided Sampling."
+  },
+  {
+    "domain": "Robotics & Embodied AI",
+    "core_focus": "Studying physical agents (robots) that perceive and act in the real world.",
+    "rdr_perspective_example": "S: Sensor Suite; B: Body Morphology; J: Joint Commands; A: Skills/Trajectories; E: Task Environment."
+  },
+  {
+    "domain": "Autonomous Driving",
+    "core_focus": "A specialized instance of robotics focusing on perception, planning, and control for ground vehicles.",
+    "rdr_perspective_example": "S: Onboard Multi-Sensor Array; B: Vehicle Dynamics Model; J: Throttle/Brake/Steering; A: Driving Policy; E: Road & Traffic Scenario."
+  },
+  {
+    "domain": "Game AI & Simulation",
+    "core_focus": "Studying strategic decision-making, multi-agent collaboration, and competition in virtual environments.",
+    "rdr_perspective_example": "I: Game State; M: Game Policy Network; O: Game Action; W: Win Rate/Score Maximization; R: Self-Play/Curriculum Learning."
+  },
+  {
+    "domain": "AI Agents",
+    "core_focus": "Systems that perceive, reason, plan, and act autonomously to achieve goals, often using tools and memory.",
+    "rdr_perspective_example": "I: Perceptual Input & Goal Specification; M: Planning/Reasoning Module (e.g., LLM-based); O: Action/Tool Call; W: Task Success/Optimal Planning; R: Agent Loop (Think-Act-Reflect) with Memory."
+  },
+  {
+    "domain": "AI Systems & ML Engineering",
+    "core_focus": "Engineering problems in efficient training, deployment, and maintenance of large-scale AI models and systems.",
+    "rdr_perspective_example": "I: Compute Hardware/Workload; M: Distributed Framework/Compiler; O: Optimized Model/Service; W: Throughput Maximization/Latency Minimization; R: Parallelization Strategy/Service Orchestration."
+  },
+  {
+    "domain": "Neuroscience-Inspired AI",
+    "core_focus": "Brain-inspired computing, Spiking Neural Networks, neuromorphic engineering."
+  },
+  {
+    "domain": "AI Safety & Alignment",
+    "core_focus": "Ensuring AI systems are robust, reliable, controllable, and aligned with human intent and values."
+  },
+  {
+    "domain": "Explainable AI (XAI) & Fairness",
+    "core_focus": "Making AI decision-making transparent and auditable; detecting and mitigating algorithmic bias."
+  },
+  {
+    "domain": "Automated Machine Learning (AutoML)",
+    "core_focus": "Automating the ML pipeline: feature engineering, model selection, hyperparameter optimization."
+  },
+  {
+    "domain": "AI Theory",
+    "core_focus": "Theoretical foundations: generalization theory, optimization theory, computational complexity in ML."
+  },
+  {
+    "domain": "AI for Science",
+    "core_focus": "Accelerating scientific discovery (e.g., in molecular simulation, astronomy, materials) using AI methods."
+  },
+  {
+    "domain": "Knowledge Representation & Reasoning (KR&R)",
+    "core_focus": "Formally representing world knowledge and performing logical reasoning (closely tied to Symbolic AI)."
+  },
+  {
+    "domain": "Meta-Learning",
+    "core_focus": "'Learning to learn': designing models that can quickly adapt to new tasks with few examples."
+  },
+  {
+    "domain": "Self-Supervised Learning",
+    "core_focus": "Learning rich representations from unlabeled data by defining a pretext task."
+  }
+]

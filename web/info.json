@@ -1,0 +1,63 @@
+{
+    "ACL": {
+        "2021": "https://aclanthology.org/events/acl-2021/#2021acl-long",
+        "2022": "https://aclanthology.org/events/acl-2022/#2022acl-long",
+        "2023": "https://aclanthology.org/events/acl-2023/#2023acl-long",
+        "2024": "https://aclanthology.org/events/acl-2024/#2024acl-long",
+        "2025": "https://aclanthology.org/events/acl-2025/#2025acl-long"
+    },
+
+    "EMNLP": {
+        "2021" : "https://aclanthology.org/events/emnlp-2021/",
+        "2022" : "https://aclanthology.org/events/emnlp-2022/",
+        "2023" : "https://aclanthology.org/events/emnlp-2023/",
+        "2024" : "https://aclanthology.org/events/emnlp-2024/",
+        "2025" : "https://aclanthology.org/events/emnlp-2025/"
+    },
+
+    "ICLR": {
+        "2021": "ICLR.cc/Conference/2021/-/Submission",
+        "2022": "ICLR.cc/Conference/2022/-/Submission",
+        "2023": "ICLR.cc/Conference/2023/-/Submission",
+        "2024": "ICLR.cc/Conference/2024/-/Submission",
+        "2025": "ICLR.cc/Conference/2025/-/Submission"
+    },
+
+    "CVPR": {
+        "2021": "https://openaccess.thecvf.com/CVPR2021?day=all",
+        "2022": "https://openaccess.thecvf.com/CVPR2022?day=all",
+        "2023": "https://openaccess.thecvf.com/CVPR2023?day=all",
+        "2024": "https://openaccess.thecvf.com/CVPR2024?day=all",
+        "2025": "https://openaccess.thecvf.com/CVPR2025?day=all"
+    },
+
+    "ICML": {
+        "2021": "https://proceedings.mlr.press/v139/",
+        "2022": "https://proceedings.mlr.press/v162/",
+        "2023": "https://proceedings.mlr.press/v202/",
+        "2024": "https://proceedings.mlr.press/v235/",
+        "2025": "https://proceedings.mlr.press/v267/"
+    },
+
+    "ICCV": {
+        "2021": "https://openaccess.thecvf.com/ICCV2021?day=all",
+        "2023": "https://openaccess.thecvf.com/ICCV2023?day=all",
+        "2025": "https://openaccess.thecvf.com/ICCV2025?day=all"        
+    },
+
+    "AAAI": {
+        "2021": "https://aaai.org/proceeding/aaai-35-2021/",
+        "2022": "https://aaai.org/proceeding/aaai-36-2022/",
+        "2023": "https://aaai.org/proceeding/aaai-37-2023/",
+        "2024": "https://aaai.org/proceeding/aaai-38-2024/",
+        "2025": "https://aaai.org/proceeding/aaai-39-2025/"
+    },
+
+    "NIPS": {
+        "2021": "NeurIPS.cc/2021/Conference/-/Submission",
+        "2022": "NeurIPS.cc/2022/Conference/-/Submission",
+        "2023": "NeurIPS.cc/2023/Conference/-/Submission",
+        "2024": "NeurIPS.cc/2024/Conference/-/Submission",
+        "2025": "NeurIPS.cc/2025/Conference/-/Submission"
+    }
+}

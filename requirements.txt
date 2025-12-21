@@ -1,0 +1,4 @@
+huggingface-hub>=0.14.1
+# optional: if you plan to run embeddings locally
+torch>=1.13.0
+transformers>=4.30.0
