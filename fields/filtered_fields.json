@@ -1,6 +1,7 @@
 [
     {
         "field": "Machine Learning (ML)",
+        "abbr": "ML",
         "explanation": "Machine Learning (ML) focuses on developing algorithms that enable computers to learn patterns and make decisions from data without explicit programming. It emphasizes predictive modeling, pattern recognition, and automated decision-making.\n\nKey Indicators:\n- Supervised Learning\n- Unsupervised Learning\n- Reinforcement Learning\n- Deep Learning",
         "perspectives": [
             "Datasets/Features",
@@ -12,6 +13,7 @@
     },
     {
         "field": "Deep Learning (DL)",
+        "abbr": "DL",
         "explanation": "Deep Learning (DL) is a subset of machine learning focused on training artificial neural networks with multiple layers to automatically learn hierarchical representations from data, enabling tasks like image recognition and natural language processing.\n\nKey Indicators:\n- Convolutional Neural Networks (CNNs)\n- Recurrent Neural Networks (RNNs)\n- Generative Adversarial Networks (GANs)\n- Transformers and attention mechanisms",
         "perspectives": [
             "Neural Network Architecture Design",
@@ -23,6 +25,7 @@
     },
     {
         "field": "Reinforcement Learning (RL)",
+        "abbr": "RL",
         "explanation": "Reinforcement Learning (RL) is a machine learning paradigm focused on training agents to make sequential decisions by interacting with an environment to maximize cumulative rewards through trial and error.  \nKey Indicators:  \n- Policy optimization methods  \n- Value function estimation  \n- Exploration vs. exploitation strategies  \n- Markov Decision Processes (MDPs)",
         "perspectives": [
             "Agent-Environment Interaction Loop",
@@ -34,6 +37,7 @@
     },
     {
         "field": "Probabilistic Graphical Models (PGMs) & Causal Inference",
+        "abbr": "PGMs",
         "explanation": "Probabilistic Graphical Models (PGMs) & Causal Inference is focused on representing complex probability distributions using graphs and using these models to infer causal relationships from data, moving beyond correlation to understand intervention effects.\n\nKey Indicators:\n- Bayesian Networks and Markov Random Fields\n- Structural Causal Models (SCMs)\n- Do-calculus and counterfactual reasoning\n- Causal discovery algorithms",
         "perspectives": [
             "Data & Assumptions",
@@ -45,6 +49,7 @@
     },
     {
         "field": "Continual/Lifelong Learning",
+        "abbr": "Continual_Learning",
         "explanation": "Continual/Lifelong Learning focuses on developing AI systems that learn sequentially from non-stationary data streams, retaining past knowledge while adapting to new tasks without catastrophic forgetting.\n\nKey Indicators:\n- Average accuracy across all learned tasks\n- Forgetting measure or backward transfer\n- Forward transfer to new tasks\n- Computational efficiency and memory overhead",
         "perspectives": [
             "Sequential Task Streams",
@@ -56,6 +61,7 @@
     },
     {
         "field": "Computer Vision (CV)",
+        "abbr": "CV",
         "explanation": "Computer Vision (CV) is focused on enabling machines to interpret and understand visual information from the world, such as images and videos. It involves tasks like object detection, image classification, and scene reconstruction.\n\nKey Indicators:\n- Object detection and recognition\n- Image segmentation and classification\n- Feature extraction and matching\n- 3D reconstruction and depth estimation",
         "perspectives": [
             "Pixel/Feature Representation",
@@ -67,6 +73,7 @@
     },
     {
         "field": "Natural Language Processing (NLP)",
+        "abbr": "NLP",
         "explanation": "Natural Language Processing (NLP) is a field of artificial intelligence focused on enabling computers to understand, interpret, and generate human language. It combines computational linguistics with machine learning to process and analyze large amounts of natural language data.\n\nKey Indicators:\n- Machine translation systems\n- Sentiment analysis\n- Named entity recognition\n- Text summarization\n- Question answering models",
         "perspectives": [
             "Text Sequences/Structures",
@@ -78,6 +85,7 @@
     },
     {
         "field": "Speech & Audio Processing",
+        "abbr": "Audio_Processing",
         "explanation": "Speech & Audio Processing focuses on analyzing, synthesizing, and manipulating sound signals, including speech recognition, music generation, and audio enhancement. It applies signal processing and machine learning to understand and generate auditory content.\n\nKey Indicators:\n- Automatic Speech Recognition (ASR)\n- Speaker Identification\n- Audio Source Separation\n- Noise Reduction and Enhancement",
         "perspectives": [
             "Speech Signal Representation",
@@ -89,6 +97,7 @@
     },
     {
         "field": "Multimodal AI",
+        "abbr": "Multimodal",
         "explanation": "Multimodal AI focuses on developing systems that can process and integrate multiple types of data inputs such as text, images, audio, and video to improve understanding and generate more coherent outputs. This field aims to create AI that can interpret and relate information across different modalities.\n\nKey Indicators:\n- Cross-modal retrieval and alignment\n- Multimodal fusion techniques\n- Vision-language models (e.g., CLIP, DALL-E)\n- Audio-visual learning\n- Multimodal reasoning and generation",
         "perspectives": [
             "Aligned Multimodal Data Pairs",
@@ -100,6 +109,7 @@
     },
     {
         "field": "Generative AI",
+        "abbr": "Generative",
         "explanation": "Generative AI focuses on creating new content such as text, images, or code by learning patterns from existing data. It emphasizes models that can produce original, coherent outputs rather than just analyzing or classifying information.\n\nKey Indicators:\n- Transformer-based architectures (e.g., GPT, BERT)\n- Diffusion models for image generation\n- Adversarial training (GANs)\n- Autoregressive language modeling",
         "perspectives": [
             "Input Representation & Conditioning",
@@ -111,6 +121,7 @@
     },
     {
         "field": "Robotics & Embodied AI",
+        "abbr": "Robotics",
         "explanation": "Robotics & Embodied AI focuses on creating intelligent physical agents that can perceive, learn, and interact with the real world. It combines robotics hardware with AI to enable autonomous decision-making and adaptive behavior in complex environments.\n\nKey Indicators:\n- Reinforcement Learning in robotic contexts\n- Imitation Learning for physical systems\n- Sim-to-real transfer\n- Task and motion planning\n- Multi-modal sensor fusion",
         "perspectives": [
             "Embodiment & Physical Form",
@@ -122,6 +133,7 @@
     },
     {
         "field": "Autonomous Driving",
+        "abbr": "Autonomous_Driving",
         "explanation": "Autonomous Driving focuses on developing vehicles capable of navigating and operating without human intervention, using sensors, AI, and control systems to perceive the environment and make driving decisions.\n\nKey Indicators:\n- Object detection and tracking accuracy\n- Miles per disengagement (safety interventions)\n- Localization precision in varied conditions\n- Path planning and decision-making reliability",
         "perspectives": [
             "Perception & Sensor Fusion",
@@ -133,6 +145,7 @@
     },
     {
         "field": "Game AI & Simulation",
+        "abbr": "Game_AI",
         "explanation": "Game AI & Simulation focuses on creating intelligent behaviors and realistic virtual environments for interactive experiences, often using algorithms to control non-player characters and simulate complex systems.  \nKey Indicators:  \n- Reinforcement Learning for adaptive agents  \n- Pathfinding and navigation algorithms  \n- Procedural content generation  \n- Physics-based simulation techniques",
         "perspectives": [
             "Game State Modeling",
@@ -144,6 +157,7 @@
     },
     {
         "field": "AI Agents",
+        "abbr": "Agents",
         "explanation": "AI Agents focuses on developing autonomous systems that perceive their environment, make decisions, and take actions to achieve specific goals, often using reinforcement learning and planning algorithms.\n\nKey Indicators:\n- Reinforcement Learning for sequential decision-making\n- Multi-Agent Systems and coordination\n- Planning and reasoning under uncertainty\n- Human-Agent collaboration and interaction",
         "perspectives": [
             "Agent Architecture & Module Design",
@@ -155,6 +169,7 @@
     },
     {
         "field": "AI Systems & ML Engineering",
+        "abbr": "MLsys",
         "explanation": "AI Systems & ML Engineering focuses on designing, building, and deploying scalable machine learning models and infrastructure to solve real-world problems efficiently. It integrates software engineering, data pipelines, and model optimization for production environments.\n\nKey Indicators:\n- Model deployment and serving latency\n- Automated machine learning (AutoML)\n- MLOps practices and pipeline automation\n- Model performance monitoring and drift detection",
         "perspectives": [
             "Compute Infrastructure",
@@ -166,6 +181,7 @@
     },
     {
         "field": "Neuroscience-Inspired AI",
+        "abbr": "NeuroAI",
         "explanation": "Neuroscience-Inspired AI is a field focused on developing artificial intelligence systems by drawing insights from biological neural processes and brain structures. It aims to create more efficient, adaptive, and interpretable algorithms by modeling principles like neural plasticity, attention, and hierarchical processing.\n\nKey Indicators:\n- Spiking Neural Networks\n- Neuromorphic Computing\n- Neural Architecture Search inspired by brain connectivity\n- Attention mechanisms derived from cognitive neuroscience",
         "perspectives": [
             "Biological Plausibility and Fidelity",
@@ -177,6 +193,7 @@
     },
     {
         "field": "AI Safety & Alignment",
+        "abbr": "Alignment",
         "explanation": "AI Safety & Alignment is focused on ensuring that artificial intelligence systems behave as intended, avoiding harmful outcomes and aligning with human values and ethical standards. It addresses risks from misaligned goals and unintended behaviors in advanced AI.\n\nKey Indicators:\n- Reward hacking detection\n- Interpretability of model decisions\n- Adversarial robustness testing\n- Value learning from human feedback",
         "perspectives": [
             "Objective Function & Reward Design",
@@ -188,6 +205,7 @@
     },
     {
         "field": "Explainable AI (XAI) & Fairness",
+        "abbr": "XAI",
         "explanation": "Explainable AI (XAI) & Fairness focuses on making AI models transparent and interpretable while ensuring they avoid discriminatory outcomes. It aims to build trust by revealing decision-making processes and mitigating biases.\n\nKey Indicators:\n- Model interpretability metrics\n- Disparate impact and demographic parity\n- Counterfactual fairness analysis\n- Feature importance scores",
         "perspectives": [
             "Problem Context and Stakeholders",
@@ -199,6 +217,7 @@
     },
     {
         "field": "Automated Machine Learning (AutoML)",
+        "abbr": "AutoML",
         "explanation": "Automated Machine Learning (AutoML) is focused on automating the end-to-end process of applying machine learning, including data preprocessing, model selection, hyperparameter tuning, and evaluation. It aims to make ML accessible and efficient for non-experts.\n\nKey Indicators:\n- Neural Architecture Search (NAS)\n- Hyperparameter Optimization (HPO)\n- Automated Feature Engineering\n- Model Selection and Ensembling",
         "perspectives": [
             "Search Space Design",
@@ -210,6 +229,7 @@
     },
     {
         "field": "AI Theory",
+        "abbr": "Theory",
         "explanation": "AI Theory focuses on the mathematical foundations, computational limits, and formal principles underlying artificial intelligence systems. It examines questions of learnability, generalization, and algorithmic efficiency.\n\nKey Indicators:\n- Computational learning theory\n- Algorithmic complexity in AI\n- Statistical learning guarantees\n- Optimization theory for machine learning\n- Formal verification of AI systems",
         "perspectives": [
             "Problem Formulation and Assumptions",
@@ -221,6 +241,7 @@
     },
     {
         "field": "AI for Science",
+        "abbr": "AI4Science",
         "explanation": "AI for Science focuses on applying artificial intelligence techniques to accelerate scientific discovery, enhance data analysis, and solve complex problems across fields like physics, chemistry, biology, and climate science.\n\nKey Indicators:\n- Predictive modeling for scientific phenomena\n- Automated hypothesis generation and testing\n- Enhanced simulation and data interpretation\n- Discovery of novel materials or compounds\n- Optimization of experimental designs",
         "perspectives": [
             "Scientific Problem & Data Context",
@@ -232,6 +253,7 @@
     },
     {
         "field": "Knowledge Representation & Reasoning (KR&R)",
+        "abbr": "KR&R",
         "explanation": "Knowledge Representation & Reasoning (KR&R) focuses on how to encode information about the world in a structured form that computers can use to solve complex problems and draw logical conclusions. It emphasizes formal logic, ontologies, and inference mechanisms.\n\nKey Indicators:\n- First-order logic and description logics\n- Ontology engineering and semantic networks\n- Automated theorem proving and reasoning algorithms\n- Rule-based systems and expert systems",
         "perspectives": [
             "Formal Language/Syntax",
@@ -243,6 +265,7 @@
     },
     {
         "field": "Meta-Learning",
+        "abbr": "Meta-Learning",
         "explanation": "Meta-Learning Definition: A subfield of machine learning focused on learning how to learn, enabling models to rapidly adapt to new tasks with limited data by leveraging prior experience. It aims to improve the efficiency and generalization of learning algorithms themselves.\n\nKey Indicators:\n- Few-shot or zero-shot learning performance\n- Model-agnostic meta-learning (MAML)\n- Optimization-based meta-learning\n- Cross-task generalization metrics",
         "perspectives": [
             "Meta-Learner Design and Optimization",

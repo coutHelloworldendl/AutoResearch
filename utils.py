@@ -69,7 +69,7 @@ class Field_Selector:
                     
                 paper["fields"] = final_fields
 
-        with open("paper/{conference_name}{year}_with_fields.json".format(conference_name=self.conference_name, year=self.year), "w") as file:
+        with open("paper/step1/{conference_name}{year}.json".format(conference_name=self.conference_name, year=self.year), "w") as file:
             json.dump(papers, file, indent=4) 
 
 def field_to_paper(conference_name, year, field_name):

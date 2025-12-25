@@ -1,6 +1,6 @@
 import json
 
-conference_name = "ICLR"
+conference_name = "EMNLP"
 year = 2025
 
 class Standardizer:
@@ -102,7 +102,7 @@ class Standardizer:
                     paper["fields"].append(std_field)
                     continue
 
-                if "Neurosymbolic Learning".lower() in field.lower():
+                if "Neurosymbolic".lower() in field.lower():
                     std_field = "Machine Learning (ML)"
                     paper["fields"].remove(field)
                     paper["fields"].append(std_field)
@@ -110,6 +110,12 @@ class Standardizer:
 
                 if "Graph Neural Networks".lower() in field.lower():
                     std_field = "Machine Learning (ML)"
+                    paper["fields"].remove(field)
+                    paper["fields"].append(std_field)
+                    continue
+
+                if "Foundation Models".lower() in field.lower():
+                    std_field = "Deep Learning (DL)"
                     paper["fields"].remove(field)
                     paper["fields"].append(std_field)
                     continue
