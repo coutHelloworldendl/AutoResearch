@@ -6,12 +6,12 @@ class Standardizer:
         self.conference_name = conference_name
         self.year = year
 
-        with open("/home/squirrel/workspace/AutoResearch/fields/filtered_fields.json", "r") as file:
+        with open("fields/filtered_fields.json", "r") as file:
             self.fields_list_full = json.load(file)
         self.fields_list = [field["field"] for field in self.fields_list_full]
 
     def standardize(self):
-        with open(f"/home/squirrel/workspace/AutoResearch/paper/step1/{self.conference_name}{self.year}.json", "r") as file:
+        with open(f"paper/step1/{self.conference_name}{self.year}.json", "r") as file:
             papers = json.load(file)
 
         for paper in papers:
@@ -130,7 +130,7 @@ class Standardizer:
                 paper["fields"].remove(field)
                 paper["fields"].append(std_field)
 
-        with open(f"/home/squirrel/workspace/AutoResearch/paper/step2/{self.conference_name}{self.year}.json", "w") as file:
+        with open(f"paper/step2/{self.conference_name}{self.year}.json", "w") as file:
             json.dump(papers, file, indent=4)
             print("Standardization complete and saved to file.")
 
@@ -140,12 +140,12 @@ class Verifier:
         self.year = year
         self.api = api
 
-        with open("/home/squirrel/workspace/AutoResearch/fields/filtered_fields.json", "r") as file:
+        with open("fields/filtered_fields.json", "r") as file:
             self.fields_list_full = json.load(file)
         self.fields_list = [field["field"] for field in self.fields_list_full]
 
     def verify(self):
-        with open(f"/home/squirrel/workspace/AutoResearch/paper/step2/{self.conference_name}{self.year}.json", "r") as file:
+        with open(f"paper/step2/{self.conference_name}{self.year}.json", "r") as file:
             papers = json.load(file)
 
         for paper in papers:

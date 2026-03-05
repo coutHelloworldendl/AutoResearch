@@ -5,9 +5,9 @@ from tqdm import tqdm
 from api import API
 import sys
 
-FIELDS_PATH = "/home/squirrel/workspace/AutoResearch/fields/filtered_fields.json"
-STEP2_DIR = "/home/squirrel/workspace/AutoResearch/paper/step2"
-OUT_DIR = "/home/squirrel/workspace/AutoResearch/paper/step3"
+FIELDS_PATH = "fields/filtered_fields.json"
+STEP2_DIR = "paper/step2"
+OUT_DIR = "paper/step3"
 
 
 def build_prompt(paper, perspectives):

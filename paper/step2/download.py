@@ -21,7 +21,7 @@ if __name__ == "__main__":
     conference_list = args.conference.split(',')
     fields_list = args.fields.split(',') if args.fields else []
     
-    with open("/home/squirrel/workspace/AutoResearch/fields/filtered_fields.json", "r") as f:
+    with open("fields/filtered_fields.json", "r") as f:
         valid_fields = [field["field"] for field in json.load(f)]
     for field in fields_list:
         assert field in valid_fields, f"Field '{field}' is not in the list of valid fields."
@@ -29,11 +29,11 @@ if __name__ == "__main__":
     download_list = []
 
     for conf in conference_list:
-        with open(f"/home/squirrel/workspace/AutoResearch/paper/step2/{conf}.json", "r") as file:
+        with open(f"paper/step2/{conf}.json", "r") as file:
             papers = json.load(file)
 
-        if not os.path.exists(f"/home/squirrel/workspace/AutoResearch/paper/pdf/{conf}"):
-            os.makedirs(f"/home/squirrel/workspace/AutoResearch/paper/pdf/{conf}")
+        if not os.path.exists(f"paper/pdf/{conf}"):
+            os.makedirs(f"paper/pdf/{conf}")
 
         for paper in tqdm(papers):
 
@@ -43,7 +43,7 @@ if __name__ == "__main__":
             if 'agents' not in set(paper.get("abstract", []).lower().split()):
                 continue
 
-            path = f"/home/squirrel/workspace/AutoResearch/paper/pdf/{conf}/{paper['paper_id']}.pdf"
+            path = f"paper/pdf/{conf}/{paper['paper_id']}.pdf"
             if os.path.exists(path):
                 print("PDF already exists for paper: {}".format(paper.get("title", "Unknown Title")))
                 continue

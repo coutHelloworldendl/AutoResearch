@@ -3,9 +3,9 @@ import json
 from sklearn.cluster import KMeans
 import os
 
-FIELDS_PATH = "/home/squirrel/workspace/AutoResearch/fields/filtered_fields.json"
-INPUT_DIR = '/home/squirrel/workspace/AutoResearch/paper/step5'
-OUTPUT_DIR = '/home/squirrel/workspace/AutoResearch/paper/step6'
+FIELDS_PATH = "fields/filtered_fields.json"
+INPUT_DIR = 'paper/step5'
+OUTPUT_DIR = 'paper/step6'
 
 
 if __name__ == '__main__':

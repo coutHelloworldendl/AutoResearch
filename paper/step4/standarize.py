@@ -2,9 +2,9 @@ import argparse
 import json
 import os
 
-FIELDS_PATH = "/home/squirrel/workspace/AutoResearch/fields/filtered_fields.json"
-INPUT_DIR = '/home/squirrel/workspace/AutoResearch/paper/step3'
-OUTPUT_DIR = '/home/squirrel/workspace/AutoResearch/paper/step4'
+FIELDS_PATH = "fields/filtered_fields.json"
+INPUT_DIR = 'paper/step3'
+OUTPUT_DIR = 'paper/step4'
 
 if __name__ == '__main__':
 

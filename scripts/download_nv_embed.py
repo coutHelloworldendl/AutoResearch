@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-下载 Hugging Face 模型 nvidia/NV-Embed-v2 到指定本地目录（默认 /model/squirrel/NV-Embed-v2）。
+下载 Hugging Face 模型 nvidia/NV-Embed-v2 到指定本地目录。
 用法示例:
   pip install huggingface-hub
-  python scripts/download_nv_embed.py --output-dir /model/squirrel/NV-Embed-v2
+  python scripts/download_nv_embed.py --output-dir models/NV-Embed-v2
 
 脚本会尝试使用环境变量 HUGGINGFACE_HUB_TOKEN 或 HUGGINGFACE_TOKEN 作为访问令牌，
 如果模型为公开模型则不需要 token。
@@ -14,7 +14,11 @@ import argparse
 from huggingface_hub import snapshot_download
 
 
-def download_model(repo_id: str = "nvidia/NV-Embed-v2", output_dir: str = "/model/squirrel/NV-Embed-v2", revision: str = None, token: str = None):
+# 默认模型下载路径（相对于项目根目录）
+DEFAULT_OUTPUT_DIR = "models/NV-Embed-v2"
+
+
+def download_model(repo_id: str = "nvidia/NV-Embed-v2", output_dir: str = DEFAULT_OUTPUT_DIR, revision: str = None, token: str = None):
     os.makedirs(output_dir, exist_ok=True)
     print(f"Downloading {repo_id} -> {output_dir}")
     try:
@@ -41,7 +45,7 @@ def download_model(repo_id: str = "nvidia/NV-Embed-v2", output_dir: str = "/mode
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Download Hugging Face model to local directory")
     parser.add_argument('--repo-id', default='nvidia/NV-Embed-v2', help='Hugging Face repo id')
-    parser.add_argument('--output-dir', default='/model/squirrel/NV-Embed-v2', help='Local directory to save the model')
+    parser.add_argument('--output-dir', default=DEFAULT_OUTPUT_DIR, help='Local directory to save the model (default: models/NV-Embed-v2)')
     parser.add_argument('--revision', default=None, help='Revision/branch/commit id (optional)')
     parser.add_argument('--token', default=None, help='Hugging Face access token (optional). If omitted, will use HUGGINGFACE_HUB_TOKEN or HUGGINGFACE_TOKEN env vars.')
     args = parser.parse_args()

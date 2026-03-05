@@ -8,13 +8,16 @@ import os
 import sys
 from tqdm import tqdm
 
-FIELDS_PATH = "/home/squirrel/workspace/AutoResearch/fields/filtered_fields.json"
-INPUT_DIR = '/home/squirrel/workspace/AutoResearch/paper/step4'
-OUTPUT_DIR = '/home/squirrel/workspace/AutoResearch/paper/step5'
+FIELDS_PATH = "fields/filtered_fields.json"
+INPUT_DIR = 'paper/step4'
+OUTPUT_DIR = 'paper/step5'
+
+DEFAULT_MODEL_PATH = 'models/NV-Embed-v2'
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--field', type=str, required=True, help='Field to embed')
+    parser.add_argument('--model-path', type=str, default=DEFAULT_MODEL_PATH, help=f'Path to the embedding model (default: {DEFAULT_MODEL_PATH})')
     args = parser.parse_args()
 
     with open(FIELDS_PATH, 'r') as f:
@@ -35,7 +38,7 @@ if __name__ == '__main__':
         exist_papers = json.load(f_out)
     exist_paper_ids = {paper['paper_id'] for paper in exist_papers}
 
-    embedder = Embed(model_path='/model/squirrel/NV-Embed-v2')
+    embedder = Embed(model_path=args.model_path)
     for paper in tqdm(papers):
 
         if paper['paper_id'] in exist_paper_ids:

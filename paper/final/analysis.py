@@ -84,8 +84,8 @@ info = {
 conferences = ["ACL", "CVPR", "EMNLP", "ICLR", "NIPS"]
 years = [2023, 2024, 2025]
 
-INPUT_PATH = "/home/squirrel/workspace/AutoResearch/paper/step1/{conference}{year}.json"
-KEYWORD_PATH = "/home/squirrel/workspace/AutoResearch/paper/step7/Agents.json"
+INPUT_PATH = "paper/step1/{conference}{year}.json"
+KEYWORD_PATH = "paper/step7/Agents.json"
 
 with open(KEYWORD_PATH, "r") as f:
     KEYWORDS = json.load(f)
@@ -127,5 +127,5 @@ if __name__ == "__main__":
         plt.xticks(years)
         plt.grid()
         plt.legend()
-        plt.savefig(f'/home/squirrel/workspace/AutoResearch/paper/final/fig/{key}.png')
+        plt.savefig(f'paper/final/fig/{key}.png')
         plt.clf()

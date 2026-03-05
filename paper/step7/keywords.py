@@ -2,9 +2,9 @@ import argparse
 import json
 import os
 
-INPUT_DIR = '/home/squirrel/workspace/AutoResearch/paper/step6'
-OUTPUT_DIR = '/home/squirrel/workspace/AutoResearch/paper/step7'
-FIELDS_PATH = "/home/squirrel/workspace/AutoResearch/fields/filtered_fields.json"
+INPUT_DIR = 'paper/step6'
+OUTPUT_DIR = 'paper/step7'
+FIELDS_PATH = "fields/filtered_fields.json"
 
 import random
 import re

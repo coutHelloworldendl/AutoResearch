@@ -4,10 +4,10 @@ import os
 import random
 from api import API
 
-KEYWORDS_DIR = '/home/squirrel/workspace/AutoResearch/paper/step7'
-ABSTRACTS_DIR = '/home/squirrel/workspace/AutoResearch/paper/raw'
-OUTPUT_DIR = '/home/squirrel/workspace/AutoResearch/paper/final'
-FIELDS_PATH = "/home/squirrel/workspace/AutoResearch/fields/filtered_fields.json"
+KEYWORDS_DIR = 'paper/step7'
+ABSTRACTS_DIR = 'paper/raw'
+OUTPUT_DIR = 'paper/final'
+FIELDS_PATH = "fields/filtered_fields.json"
 
 prompt = \
 '''

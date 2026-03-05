@@ -86,17 +86,50 @@ python -m paper.step1.annotate_field --conference ICLR --year 2024
 python paper/step2/standarize.py --conference ICLR --year 2024
 ```
 
-### 4. 后续处理步骤
+### 4. 下载嵌入模型（用于 Step 5）
+
+项目使用 `nvidia/NV-Embed-v2` 模型生成论文嵌入向量。请先下载模型：
+
+```bash
+# 默认下载到 models/NV-Embed-v2
+python scripts/download_nv_embed.py
+
+# 或指定自定义路径
+python scripts/download_nv_embed.py --output-dir /path/to/your/model
+```
+
+**环境变量**: 如果模型需要 HuggingFace token，请设置：
+```bash
+export HUGGINGFACE_HUB_TOKEN="your_hf_token"
+# 或
+export HUGGINGFACE_TOKEN="your_hf_token"
+```
+
+### 5. 后续处理步骤
 
 项目采用流水线式处理，各步骤依次执行：
 
 - **Step 3**: 论文摘要总结
 - **Step 4**: 数据规范化处理
-- **Step 5**: 生成文本嵌入向量
+- **Step 5**: 生成文本嵌入向量（需要指定模型路径）
 - **Step 6**: K-means 聚类分析
 - **Step 7**: 关键词提取
 
-### 5. 按领域检索论文
+#### Step 5 使用说明
+
+生成文本嵌入向量（默认使用 `models/NV-Embed-v2`）：
+
+```bash
+python paper/step5/embed.py --field "AI Agents"
+```
+
+如果使用自定义模型路径：
+
+```bash
+python paper/step5/embed.py --field "AI Agents" --model-path /path/to/your/model
+```
+
+### 6. 按领域检索论文
 
 ```python
 from utils import field_to_paper
@@ -104,6 +137,13 @@ from utils import field_to_paper
 # 获取指定会议年份中特定领域的论文
 papers = field_to_paper("ICLR", 2024, "Robotics")
 print(f"找到 {len(papers)} 篇相关论文")
+```
+
+## 项目结构补充说明
+
+```
+models/                     # 存放下载的嵌入模型（默认 NV-Embed-v2）
+└── NV-Embed-v2/           # 由 scripts/download_nv_embed.py 下载
 ```
 
 ## 研究领域定义
