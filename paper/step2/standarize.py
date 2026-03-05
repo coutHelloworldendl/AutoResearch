@@ -1,7 +1,5 @@
 import json
-
-conference_name = "EMNLP"
-year = 2025
+import argparse
 
 class Standardizer:
     def __init__(self, conference_name, year):
@@ -164,8 +162,12 @@ class Verifier:
         print("All papers verified successfully.")
     
 if __name__ == "__main__":
-    print("Processing conference:{}, {}".format(conference_name, year))
-    standardizer = Standardizer(conference_name=conference_name, year=year)
+    parser = argparse.ArgumentParser(description="Standardize and verify paper fields")
+    parser.add_argument("--conference_name", type=str, required=True, help="Name of the conference (e.g., NeurIPS, ICML)")
+    parser.add_argument("--year", type=int, required=True, help="Year of the conference (e.g., 2023)")
+    args = parser.parse_args()
+    print("Processing conference:{}, {}".format(args.conference_name, args.year))
+    standardizer = Standardizer(conference_name=args.conference_name, year=args.year)
     standardizer.standardize()
-    verifier = Verifier(conference_name=conference_name, year=year, api=None)
+    verifier = Verifier(conference_name=args.conference_name, year=args.year, api=None)
     verifier.verify()

@@ -11,7 +11,7 @@ import openreview
 import getpass
 from tqdm import tqdm
 
-INFO = json.load(open("web/info.json", "r")) 
+INFO = json.load(open("info.json", "r")) 
 USERNAME = os.getenv("OR_USERNAME", None)
 PASSWORD = os.getenv("OR_PASSWORD", None)
 
@@ -30,7 +30,7 @@ class Requester:
             return response.text
         except requests.RequestException as e:
             print(f"[ERROR] Request to {url} failed: {e}")
-            return {}
+            raise
     
     def request(self, url: str) -> dict:
         for _ in range(self.max_retries):

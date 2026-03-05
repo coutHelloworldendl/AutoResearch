@@ -109,5 +109,29 @@
   {
     "domain": "Self-Supervised Learning",
     "core_focus": "Learning rich representations from unlabeled data by defining a pretext task."
+  },
+  {
+    "domain": "Federated Learning & Privacy-Preserving ML",
+    "core_focus": "Training models across decentralized devices while preserving data privacy."
+  },
+  {
+    "domain": "Graph Neural Networks (GNNs)",
+    "core_focus": "Learning on graph-structured data for node/edge classification, link prediction, and graph generation."
+  },
+  {
+    "domain": "Foundation Models",
+    "core_focus": "Large-scale pre-trained models that can be adapted to a wide range of downstream tasks."
+  },
+  {
+    "domain": "Dataset Distillation",
+    "core_focus": "Creating smaller, synthetic datasets that retain the performance of larger datasets for training models."
+  },
+  {
+    "domain": "Anomaly Detection",
+    "core_focus": "Identifying rare or unusual patterns in data that do not conform to expected behavior."
+  },
+  {
+    "domain": "Knowledge Distillation(KD)",
+    "core_focus": "Transferring knowledge from a large, complex model (teacher) to a smaller, simpler model (student) while retaining performance."
   }
 ]

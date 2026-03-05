@@ -20,7 +20,8 @@
         "2022": "ICLR.cc/Conference/2022/-/Submission",
         "2023": "ICLR.cc/Conference/2023/-/Submission",
         "2024": "ICLR.cc/Conference/2024/-/Submission",
-        "2025": "ICLR.cc/Conference/2025/-/Submission"
+        "2025": "ICLR.cc/Conference/2025/-/Submission",
+        "2026": "ICLR.cc/Conference/2026/-/Submission"
     },
 
     "CVPR": {
@@ -28,7 +29,8 @@
         "2022": "https://openaccess.thecvf.com/CVPR2022?day=all",
         "2023": "https://openaccess.thecvf.com/CVPR2023?day=all",
         "2024": "https://openaccess.thecvf.com/CVPR2024?day=all",
-        "2025": "https://openaccess.thecvf.com/CVPR2025?day=all"
+        "2025": "https://openaccess.thecvf.com/CVPR2025?day=all",
+        "2026": "https://openaccess.thecvf.com/CVPR2026?day=all"
     },
 
     "ICML": {

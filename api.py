@@ -90,3 +90,4 @@ class Embed:
             texts = [texts]
         embeddings = self.model.encode(texts, max_length=self.max_length)
         return embeddings.cpu().numpy()
+    

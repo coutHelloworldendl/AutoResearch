@@ -5,6 +5,14 @@ import os
 import time
 from tqdm import tqdm
 
+def download_papers(url, path):
+    response = requests.get(url)
+    response.raise_for_status()
+
+    with open(path, "wb") as pdf_file:
+        for chunk in response.iter_content(chunk_size=8192):
+            pdf_file.write(chunk)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--conference", type=str, required=True, help="Conference name (e.g., ICLR, NIPS)")
@@ -18,6 +26,8 @@ if __name__ == "__main__":
     for field in fields_list:
         assert field in valid_fields, f"Field '{field}' is not in the list of valid fields."
 
+    download_list = []
+
     for conf in conference_list:
         with open(f"/home/squirrel/workspace/AutoResearch/paper/step2/{conf}.json", "r") as file:
             papers = json.load(file)
@@ -30,26 +40,32 @@ if __name__ == "__main__":
             if set(fields_list).isdisjoint(set(paper.get("fields", []))):
                 continue
 
-            pdf_url = paper.get("pdf_url", None)
+            if 'agents' not in set(paper.get("abstract", []).lower().split()):
+                continue
+
             path = f"/home/squirrel/workspace/AutoResearch/paper/pdf/{conf}/{paper['paper_id']}.pdf"
             if os.path.exists(path):
                 print("PDF already exists for paper: {}".format(paper.get("title", "Unknown Title")))
                 continue
 
+            pdf_url = paper.get("pdf_url", None)
             if pdf_url is None:
                 print("No PDF URL for paper: {}".format(paper.get("title", "Unknown Title")))
                 continue
-            try:
-                response = requests.get(pdf_url)
-                response.raise_for_status()
 
-                with open(path, "wb") as pdf_file:
-                    for chunk in response.iter_content(chunk_size=8192):
-                        pdf_file.write(chunk)
+            download_list.append((pdf_url, path))
 
-                print("Downloaded PDF for paper: {}".format(paper.get("paper_id", "Unknown Title")))
-                time.sleep(1)  # Be polite and avoid overwhelming the server
-            except requests.exceptions.RequestException as e:
-                print("Failed to download PDF for paper: {}. Error: {}".format(paper.get("title", "Unknown Title"), str(e)))
+            print("Prepared to download paper: {}".format(paper.get("title", "Unknown Title")))
+            
+    print(f"Total papers to download: {len(download_list)}")
+
+    
+
+    # for url, path in tqdm(download_list):
+    #     try:
+    #         download_papers(url, path)
+    #         time.sleep(1)  # Be polite to the server
+    #     except Exception as e:
+    #         print(f"Failed to download {url}. Error: {e}")
 
     

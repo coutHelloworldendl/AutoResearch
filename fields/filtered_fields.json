@@ -274,5 +274,77 @@
             "Meta-Knowledge Representation and Transfer",
             "Evaluation Protocol and Benchmark Rigor"
         ]
+    },
+    {
+        "field": "Federated Learning & Privacy-Preserving ML",
+        "abbr": "Federated_Learning",
+        "explanation": "Federated Learning & Privacy-Preserving ML focuses on training machine learning models across decentralized devices or servers while ensuring data privacy and security. It aims to enable collaborative learning without sharing raw data.\n\nKey Indicators:\n- Communication efficiency in distributed training\n- Privacy guarantees (e.g., differential privacy)\n- Model performance under non-IID data distributions\n- Robustness to adversarial attacks",
+        "perspectives": [
+            "Decentralized Data Distribution",
+            "Privacy-Preserving Mechanisms",
+            "Communication Protocols",
+            "Model Aggregation Strategies",
+            "Robustness and Security Measures"
+        ]
+    },
+    {
+        "field": "Graph Neural Networks (GNNs)",
+        "abbr": "GNNs",
+        "explanation": "Graph Neural Networks (GNNs) focus on learning from graph-structured data by leveraging the relationships and interactions between nodes and edges. They are used for tasks like node classification, link prediction, and graph generation.\n\nKey Indicators:\n- Message passing and aggregation functions\n- Graph convolutional architectures\n- Node and edge feature learning\n- Applications in social networks, biology, and recommendation systems",
+        "perspectives": [
+            "Graph Structure & Representation",
+            "Node/Edge Feature Encoding",
+            "GNN Architecture & Layers",
+            "Training Objectives & Loss Functions",
+            "Downstream Tasks & Evaluation Metrics"
+        ]
+    },
+    {
+        "field": "Foundation Models",
+        "abbr": "Foundation_Models",
+        "explanation": "Foundation Models are large-scale pre-trained models that serve as a base for various downstream tasks across different domains. They are characterized by their ability to generalize from vast amounts of data and can be fine-tuned for specific applications.\n\nKey Indicators:\n- Scale of model parameters and training data\n- Transfer learning capabilities\n- Versatility across multiple tasks\n- Fine-tuning efficiency and performance",
+        "perspectives": [
+            "Pre-training Data & Objectives",
+            "Model Architecture & Scale",
+            "Transfer Learning Mechanisms",
+            "Fine-tuning Strategies",
+            "Evaluation Across Diverse Tasks"
+        ]
+    },
+    {
+        "field": "Dataset Distillation",
+        "abbr": "Dataset_Distillation",
+        "explanation": "Dataset Distillation focuses on creating smaller, synthetic datasets that retain the essential characteristics of larger datasets for training machine learning models. It aims to reduce computational costs while maintaining model performance.\n\nKey Indicators:\n- Quality of distilled datasets\n- Training efficiency and speedup\n- Model performance on downstream tasks\n- Generalization from distilled data",
+        "perspectives": [
+            "Distillation Methodology",
+            "Synthetic Data Generation",
+            "Training Efficiency & Speedup",
+            "Model Performance & Generalization",
+            "Evaluation Metrics & Benchmarks"
+        ]
+    },
+    {
+        "field": "Anomaly Detection",
+        "abbr": "Anomaly_Detection",
+        "explanation": "Anomaly Detection focuses on identifying rare or unusual patterns in data that deviate from expected behavior. It is used in applications like fraud detection, network security, and fault diagnosis.\n\nKey Indicators:\n- Detection accuracy and precision\n- False positive and false negative rates\n- Robustness to noise and outliers\n- Scalability to large datasets",
+        "perspectives": [
+            "Data Representation & Feature Extraction",
+            "Model Architecture & Learning Paradigm",
+            "Evaluation Metrics & Benchmarking",
+            "Robustness to Noise & Outliers",
+            "Scalability & Computational Efficiency"
+        ]
+    },
+    {
+        "field": "Knowledge Distillation(KD)",
+        "abbr": "Knowledge_Distillation",
+        "explanation": "Knowledge Distillation (KD) focuses on transferring knowledge from a large, complex model (teacher) to a smaller, simpler model (student) while retaining performance. It aims to create efficient models suitable for deployment without sacrificing accuracy.\n\nKey Indicators:\n- Performance retention in student model\n- Efficiency gains in model size and inference speed\n- Generalization capabilities of the student model\n- Effectiveness of distillation techniques (e.g., soft labels, intermediate representations)",
+        "perspectives": [
+            "Teacher Model Design and Performance",
+            "Student Model Architecture and Constraints",
+            "Distillation Methodology and Loss Functions",
+            "Evaluation Metrics for Performance Retention",
+            "Generalization and Robustness of Student Model"
+        ]
     }
 ]
